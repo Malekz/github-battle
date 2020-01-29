@@ -3,6 +3,7 @@ import ReactDOM from "react-dom"; // This package to render the app to the DOM
 import "./index.css";
 import Popular from "./components/Popular";
 import Battle from "./components/Battle";
+import { ThemeProvider } from './contexts/theme'
 /**
  * every react Component have three things:
  *
@@ -15,11 +16,25 @@ import Battle from "./components/Battle";
  */
 
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      theme: 'light',
+      toggleTheme: () => {
+        this.setState(({ theme }) => ({
+          theme: theme === 'light' ? 'dark' : 'light'
+        }))
+      }
+    }
+  }
   render() {
     return (
-      <div className="container">
-        <Battle />
-      </div>
+      <ThemeProvider value={this.state}>
+        <div className="container">
+          <Battle />
+        </div>
+      </ThemeProvider>
     );
   }
 }
