@@ -17,6 +17,8 @@
   "license": "ISC",
   "dependencies": {
     "prop-types": "^15.7.2",
+    "query-string": "^6.10.1",
+    "querystring": "^0.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-icons": "^3.8.0",
