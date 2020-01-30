@@ -20,7 +20,7 @@ export default function Nav() {
             </li>
           </ul>
           <button style={{ fontSize: 30 }} className='btn-clear' onClick={toggleTheme}>
-            {theme === 'light' ? 'Dark' : 'Light'}
+            {theme === 'light' ? '🔦' : '💡'}
 
           </button>
         </nav>
