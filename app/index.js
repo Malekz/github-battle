@@ -23,6 +23,7 @@ const Results = React.lazy(() => import('./components/Results'))
  *
  */
 
+ /*
 class App extends React.Component {
   state = {
     theme: 'light',
@@ -54,6 +55,35 @@ class App extends React.Component {
     );
   }
 }
+
+*/
+
+function App () {
+  const [theme, setTheme] = React.useState('light')
+  const toggleTheme = () => setTheme((theme) => theme === 'light' ? 'dark' : 'light')
+
+  return (
+    <Router>
+      <ThemeProvider value={theme}>
+        <div className={theme}>
+          <div className='container'>
+            <Nav toggleTheme={toggleTheme} />
+
+            <React.Suspense fallback={<Loading />} >
+              <Switch>
+                <Route exact path='/' component={Popular} />
+                <Route exact path='/battle' component={Battle} />
+                <Route path='/battle/results' component={Results} />
+                <Route render={() => <h1>404</h1>} />
+              </Switch>
+            </React.Suspense>
+          </div>
+        </div>
+      </ThemeProvider>
+    </Router>
+  )
+}
+
 
 // React is pure JSX format that browser cannot understand, so what is happening is before it's ever shipped to to a browser, Babel's going to go ahead and take care of that and convert it to just normal JavaScript invocations. So now we have our react component and the next thing is to render it to the DOM
 
